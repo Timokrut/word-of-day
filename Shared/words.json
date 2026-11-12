@@ -1,0 +1,170 @@
+[
+  {
+    "id": "euphoria", "word": "euphoria", "partOfSpeech": "noun", "phonetic": "/juːˈfɔːriə/", "register": "standard",
+    "definition": "an intense feeling of happiness and excitement",
+    "translation": "эйфория, чувство восторга",
+    "explanation": "Сильный эмоциональный подъём, когда радость на какое-то время захватывает целиком.",
+    "usage": "Подходит для ярких переживаний: победы, концерта, хороших новостей. Для обычного хорошего настроения чаще достаточно happiness.",
+    "synonyms": ["elation", "joy", "exhilaration"],
+    "examples": [
+      {"english": "For a moment, the whole crowd shared the same euphoria.", "russian": "На мгновение всю толпу охватило общее чувство восторга."},
+      {"english": "The euphoria of getting the offer lasted all weekend.", "russian": "Эйфория от полученного предложения о работе не проходила все выходные."}
+    ]
+  },
+  {
+    "id": "lowkey", "word": "lowkey", "partOfSpeech": "adverb", "phonetic": "/ˌloʊˈkiː/", "register": "slang",
+    "definition": "quietly or secretly, without making a big deal of it",
+    "translation": "втайне; немного; если честно",
+    "explanation": "Помогает ненавязчиво признаться в чувстве или мнении. Иногда смягчает фразу примерно как «вообще-то» или «немного».",
+    "usage": "Для переписки и разговоров с друзьями. Здесь сленговое наречие lowkey; прилагательное low-key означает «сдержанный, спокойный».",
+    "synonyms": ["secretly", "quietly"],
+    "examples": [
+      {"english": "I lowkey want to stay home and watch old movies.", "russian": "Если честно, мне хочется остаться дома и смотреть старые фильмы."},
+      {"english": "She was lowkey excited about the reunion.", "russian": "В глубине души она очень ждала эту встречу."}
+    ]
+  },
+  {
+    "id": "serendipity", "word": "serendipity", "partOfSpeech": "noun", "phonetic": "/ˌserənˈdɪpəti/", "register": "standard",
+    "definition": "the luck of finding something good when you were not looking for it",
+    "translation": "счастливая случайность; удачная находка",
+    "explanation": "Не просто удача, а неожиданная встреча или открытие, к которому ты специально не стремился.",
+    "usage": "Хорошо подходит для рассказа о неожиданном знакомстве, находке или совпадении. Звучит чуть книжнее, чем luck.",
+    "synonyms": ["chance", "good fortune"],
+    "examples": [
+      {"english": "Finding my favourite record in that tiny shop was pure serendipity.", "russian": "Найти любимую пластинку в том крошечном магазине было счастливой случайностью."},
+      {"english": "A little serendipity turned a missed train into a new friendship.", "russian": "Благодаря счастливой случайности опоздание на поезд обернулось новой дружбой."}
+    ]
+  },
+  {
+    "id": "vibe", "word": "vibe", "partOfSpeech": "noun", "phonetic": "/vaɪb/", "register": "slang",
+    "definition": "the mood or feeling a person, place, or moment gives you",
+    "translation": "атмосфера; настроение; вайб",
+    "explanation": "Общее ощущение от места, человека, музыки или ситуации, которое бывает сложно описать точнее.",
+    "usage": "Разговорное слово. Часто встречается во множественном числе: good vibes. Здесь разбирается значение существительного.",
+    "synonyms": ["atmosphere", "mood", "feeling"],
+    "examples": [
+      {"english": "This little café has a calm, late-night vibe.", "russian": "У этого маленького кафе спокойная атмосфера позднего вечера."},
+      {"english": "The playlist changed the vibe of the whole room.", "russian": "Этот плейлист изменил настроение всей комнаты."}
+    ]
+  },
+  {
+    "id": "resilient", "word": "resilient", "partOfSpeech": "adjective", "phonetic": "/rɪˈzɪliənt/", "register": "standard",
+    "definition": "able to recover and keep going after difficulties",
+    "translation": "стойкий; умеющий восстанавливаться",
+    "explanation": "О человеке или системе, которые после трудностей возвращаются в рабочее состояние и продолжают двигаться дальше.",
+    "usage": "Описывает способность восстанавливаться, а не отсутствие чувств или проблем. Часто употребляется в сочетании resilient person.",
+    "synonyms": ["tough", "adaptable"],
+    "examples": [
+      {"english": "She stayed resilient through a difficult first year abroad.", "russian": "Она стойко прошла через трудный первый год за границей."},
+      {"english": "A resilient team can learn from a failed launch.", "russian": "Стойкая команда способна извлечь уроки из неудачного запуска."}
+    ]
+  },
+  {
+    "id": "no-cap", "word": "no cap", "partOfSpeech": "phrase", "phonetic": "/noʊ kæp/", "register": "slang",
+    "definition": "used to say that you are being honest or not exaggerating",
+    "translation": "без вранья; серьёзно; честно",
+    "explanation": "Подчёркивает, что говорящий не преувеличивает. Cap в этом сленговом контексте означает ложь.",
+    "usage": "Неформальная фраза, связанная с афроамериканским английским и интернет-культурой. Лучше оставить для общения с друзьями.",
+    "synonyms": ["honestly", "for real"],
+    "examples": [
+      {"english": "That was the best live show I have ever seen, no cap.", "russian": "Это был лучший концерт в моей жизни, без преувеличения."},
+      {"english": "No cap, your advice helped me a lot.", "russian": "Серьёзно, твой совет мне очень помог."}
+    ]
+  },
+  {
+    "id": "subtle", "word": "subtle", "partOfSpeech": "adjective", "phonetic": "/ˈsʌtəl/", "register": "standard",
+    "definition": "not immediately obvious, but noticeable if you pay attention",
+    "translation": "тонкий; едва заметный; ненавязчивый",
+    "explanation": "О небольшой детали или различии, которые не бросаются в глаза, но всё же имеют значение.",
+    "usage": "Буква b не произносится. Частые сочетания: subtle difference, subtle hint, subtle change.",
+    "synonyms": ["delicate", "understated"],
+    "examples": [
+      {"english": "There is a subtle difference between these two shades of blue.", "russian": "Между этими двумя оттенками синего есть едва заметная разница."},
+      {"english": "He gave me a subtle hint that it was time to leave.", "russian": "Он ненавязчиво намекнул мне, что пора уходить."}
+    ]
+  },
+  {
+    "id": "ghost", "word": "ghost", "partOfSpeech": "verb", "phonetic": "/ɡoʊst/", "register": "slang",
+    "definition": "to suddenly stop replying to someone without an explanation",
+    "translation": "пропасть из общения; перестать отвечать",
+    "explanation": "Резко прекратить контакт без объяснения причин: не отвечать на сообщения и звонки.",
+    "usage": "Здесь глагол, а не существительное «призрак». Формы: ghosted, ghosting. Употребляется не только в контексте свиданий.",
+    "synonyms": ["ignore", "cut off contact"],
+    "examples": [
+      {"english": "We made plans, and then he ghosted me for a week.", "russian": "Мы договорились встретиться, а потом он неделю мне не отвечал."},
+      {"english": "Please do not ghost the group chat when we need your answer.", "russian": "Пожалуйста, не пропадай из общего чата, когда нам нужен твой ответ."}
+    ]
+  },
+  {
+    "id": "linger", "word": "linger", "partOfSpeech": "verb", "phonetic": "/ˈlɪŋɡər/", "register": "standard",
+    "definition": "to stay longer than expected, or fade away slowly",
+    "translation": "задерживаться; долго не исчезать",
+    "explanation": "Можно задержаться в каком-то месте; запах, воспоминание или чувство тоже могут оставаться надолго.",
+    "usage": "Часто: linger over coffee — неспешно сидеть за кофе; a lingering feeling — чувство, которое долго не проходит.",
+    "synonyms": ["remain", "stay"],
+    "examples": [
+      {"english": "We lingered outside the venue after the concert.", "russian": "После концерта мы ещё задержались у входа."},
+      {"english": "The smell of fresh coffee lingered in the kitchen.", "russian": "На кухне всё ещё стоял запах свежего кофе."}
+    ]
+  },
+  {
+    "id": "rizz", "word": "rizz", "partOfSpeech": "noun", "phonetic": "/rɪz/", "register": "slang",
+    "definition": "charm that helps someone attract romantic interest",
+    "translation": "харизма; обаяние во флирте",
+    "explanation": "Умение расположить к себе человека и вызвать романтический интерес за счёт обаяния и манеры общения.",
+    "usage": "Молодёжный и интернет-сленг. Часто звучит шутливо: have rizz. В деловом общении уместнее charm или charisma.",
+    "synonyms": ["charm", "charisma"],
+    "examples": [
+      {"english": "He has enough rizz to turn an awkward introduction into a date.", "russian": "Ему хватает обаяния, чтобы превратить неловкое знакомство в свидание."},
+      {"english": "My friends say my only rizz is remembering everyone's coffee order.", "russian": "Друзья говорят, что всё моё обаяние — в умении помнить, кто какой кофе пьёт."}
+    ]
+  },
+  {
+    "id": "solace", "word": "solace", "partOfSpeech": "noun", "phonetic": "/ˈsɑːləs/", "register": "standard",
+    "definition": "comfort that makes sadness or difficulty easier to bear",
+    "translation": "утешение; душевная поддержка",
+    "explanation": "Что-то, что помогает пережить грусть, потерю или тяжёлый период и почувствовать себя чуть спокойнее.",
+    "usage": "Немного книжное слово. Частая конструкция: find solace in something — находить утешение в чём-либо.",
+    "synonyms": ["comfort", "consolation"],
+    "examples": [
+      {"english": "She found solace in long walks and familiar songs.", "russian": "Она находила утешение в долгих прогулках и знакомых песнях."},
+      {"english": "A quiet conversation offered a little solace after a hard day.", "russian": "Спокойный разговор немного утешил после тяжёлого дня."}
+    ]
+  },
+  {
+    "id": "delulu", "word": "delulu", "partOfSpeech": "adjective", "phonetic": "/dɪˈluːluː/", "register": "slang",
+    "definition": "unrealistically hopeful or convinced of something, often playfully",
+    "translation": "витающий в фантазиях; наивно уверенный",
+    "explanation": "Шутливое сокращение от delusional: человек верит в желанный сценарий, хотя оснований для него почти нет.",
+    "usage": "Интернет-сленг, часто самоирония. Не медицинский термин; в адрес другого человека может прозвучать обидно.",
+    "synonyms": ["unrealistic", "overoptimistic"],
+    "examples": [
+      {"english": "I am a little delulu about getting front-row tickets tomorrow.", "russian": "Я наивно надеюсь, что завтра достану билеты в первый ряд."},
+      {"english": "Maybe I am delulu, but I think they liked my demo.", "russian": "Может, я выдаю желаемое за действительное, но, кажется, им понравилась моя демозапись."}
+    ]
+  },
+  {
+    "id": "nuance", "word": "nuance", "partOfSpeech": "noun", "phonetic": "/ˈnuːɑːns/", "register": "standard",
+    "definition": "a small but meaningful difference in meaning, feeling, or expression",
+    "translation": "нюанс; тонкий оттенок смысла",
+    "explanation": "Небольшое различие, которое меняет восприятие фразы, интонации или идеи.",
+    "usage": "Используется и с языком, и с искусством, и с обсуждением сложных тем. Во множественном числе: nuances.",
+    "synonyms": ["subtlety", "shade of meaning"],
+    "examples": [
+      {"english": "The translation keeps the meaning but loses a little nuance.", "russian": "Перевод сохраняет смысл, но теряет тонкий оттенок."},
+      {"english": "Her voice gave the same sentence a different nuance.", "russian": "Её голос придал той же фразе другой оттенок."}
+    ]
+  },
+  {
+    "id": "cooked", "word": "cooked", "partOfSpeech": "adjective", "phonetic": "/kʊkt/", "register": "slang",
+    "definition": "in serious trouble, exhausted, or unlikely to succeed",
+    "translation": "всё, приехали; вымотанный; без шансов",
+    "explanation": "Шутливое описание ситуации, когда сил или шансов почти не осталось. Конкретный перевод зависит от контекста.",
+    "usage": "Сленговое значение отличается от обычного «приготовленный». Часто встречается фраза I'm cooked или We're cooked.",
+    "synonyms": ["done for", "exhausted"],
+    "examples": [
+      {"english": "The deadline is in an hour and we have not started. We are cooked.", "russian": "До дедлайна час, а мы ещё не начинали. Всё, приехали."},
+      {"english": "After that double shift, I was completely cooked.", "russian": "После той двойной смены я был совершенно вымотан."}
+    ]
+  }
+]
