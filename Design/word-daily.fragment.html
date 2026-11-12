@@ -1,0 +1,155 @@
+<div id="word-daily-preview" class="viz-dotted-background">
+  <div class="wd-stage">
+    <button type="button" class="wd-widget cursor-interaction" aria-label="Открыть слово дня euphoria">
+      <span class="wd-widget-top"><span>WORD OF THE DAY</span><span class="wd-brand">word.</span></span>
+      <span class="wd-widget-head"><span class="wd-word">euphoria</span><span class="wd-pos">noun</span></span>
+      <span class="wd-phonetic">/juːˈfɔːriə/</span>
+      <span class="wd-widget-definition">: an intense feeling of happiness and excitement</span>
+    </button>
+    <section class="wd-app" aria-label="Карточка слова в приложении" hidden>
+      <div class="wd-app-bar"><button type="button" class="wd-back cursor-interaction"><i data-lucide="chevron-left" aria-hidden="true"></i>Виджет</button><span>word.</span><span class="wd-bar-spacer"></span></div>
+      <article class="wd-article">
+        <p class="wd-eyebrow">ОДНО СЛОВО. КАЖДЫЙ ДЕНЬ.</p>
+        <h2 class="wd-app-word">euphoria</h2>
+        <p class="wd-app-pos">noun</p>
+        <p class="wd-app-phonetic">/juːˈfɔːriə/</p>
+        <p class="wd-definition">: an intense feeling of happiness and excitement</p>
+        <p class="wd-translation">эйфория, чувство восторга</p>
+        <p class="wd-explanation">Сильный эмоциональный подъём, когда радость на какое-то время захватывает целиком.</p>
+        <div class="wd-rule"></div>
+        <h3>В КОНТЕКСТЕ</h3>
+        <div class="wd-examples"></div>
+        <h3>КАК ИСПОЛЬЗОВАТЬ</h3>
+        <p class="wd-usage"></p>
+        <h3>БЛИЗКИЕ ПО СМЫСЛУ</h3>
+        <p class="wd-synonyms"></p>
+      </article>
+    </section>
+    <p class="wd-hint">Нажми на виджет — откроется слово.</p>
+  </div>
+</div>
+<style>
+  #word-daily-preview { --wd-paper:light-dark(#fafaf8,#1a1c1c); --wd-ink:light-dark(#252929,#f1f1ed); --wd-blue:light-dark(#4a707d,#97c2cf); --wd-secondary:light-dark(#666b69,#aeb4b1); --wd-line:light-dark(#d6dcda,#414c4a); padding:28px 16px; box-sizing:border-box; }
+  #word-daily-preview * { box-sizing:border-box; }
+  #word-daily-preview [hidden] { display:none !important; }
+  #word-daily-preview .wd-stage { max-width:390px; margin:auto; }
+  #word-daily-preview .wd-widget { width:100%; max-width:360px; min-height:176px; margin:0 auto; padding:20px 23px; display:flex; flex-direction:column; align-items:stretch; text-align:left; background:var(--wd-paper); color:var(--wd-ink); border:1px solid var(--wd-line); border-radius:24px; font-family:Arial,sans-serif; box-shadow:0 3px 16px #0000000b; }
+  #word-daily-preview .wd-widget-top { display:flex; justify-content:space-between; gap:8px; font:9px/1.4 ui-monospace,monospace; letter-spacing:1.4px; color:var(--wd-secondary); margin-bottom:13px; }
+  #word-daily-preview .wd-widget-head { display:flex; align-items:baseline; gap:10px; }
+  #word-daily-preview .wd-word { font:700 41px/1.08 Georgia,'Times New Roman',serif; letter-spacing:-1.7px; }
+  #word-daily-preview .wd-pos { color:var(--wd-blue); font:700 18px/1.2 Georgia,'Times New Roman',serif; }
+  #word-daily-preview .wd-phonetic { color:var(--wd-secondary); font-size:12px; line-height:1.4; margin-top:9px; }
+  #word-daily-preview .wd-widget-definition { font-size:13px; line-height:1.45; margin-top:10px; }
+  #word-daily-preview .wd-widget.wd-small { max-width:174px; min-height:174px; padding:17px; }
+  #word-daily-preview .wd-small .wd-widget-head { display:block; }
+  #word-daily-preview .wd-small .wd-word { display:block; font-size:31px; letter-spacing:-1px; }
+  #word-daily-preview .wd-small .wd-pos { display:block; font-size:12px; font-style:italic; font-weight:400; margin-top:5px; }
+  #word-daily-preview .wd-small .wd-widget-definition { font-size:11px; margin-top:8px; }
+  #word-daily-preview .wd-small .wd-widget-top { font-size:8px; margin-bottom:10px; letter-spacing:1px; }
+  #word-daily-preview .wd-small .wd-phonetic, #word-daily-preview .wd-small .wd-brand { display:none; }
+  #word-daily-preview .wd-hint { font:12px/1.5 -apple-system,BlinkMacSystemFont,Arial,sans-serif; text-align:center; color:var(--wd-secondary); margin:16px 0 0; }
+  #word-daily-preview .wd-app { background:var(--wd-paper); color:var(--wd-ink); border:1px solid var(--wd-line); border-radius:24px; overflow:hidden; font-family:-apple-system,BlinkMacSystemFont,Arial,sans-serif; }
+  #word-daily-preview .wd-app-bar { display:flex; align-items:center; justify-content:space-between; padding:8px 10px; border-bottom:1px solid var(--wd-line); font:700 18px/1.3 Georgia,serif; }
+  #word-daily-preview .wd-back { display:flex; align-items:center; justify-content:flex-start; gap:2px; background:transparent; color:var(--wd-blue); border:0; min-height:44px; min-width:85px; padding:0 4px; font:14px/1.4 -apple-system,BlinkMacSystemFont,Arial,sans-serif; }
+  #word-daily-preview .wd-back svg { width:18px; height:18px; }
+  #word-daily-preview .wd-bar-spacer { width:85px; }
+  #word-daily-preview .wd-article { padding:30px 27px; }
+  #word-daily-preview p, #word-daily-preview h2, #word-daily-preview h3 { margin:0; }
+  #word-daily-preview .wd-eyebrow, #word-daily-preview h3 { font:10px/1.6 ui-monospace,monospace; font-weight:400; letter-spacing:1.7px; color:var(--wd-secondary); }
+  #word-daily-preview .wd-app-word { font:700 clamp(38px,8vw,52px)/1.15 Georgia,'Times New Roman',serif; letter-spacing:-2px; margin-top:22px; overflow-wrap:anywhere; }
+  #word-daily-preview .wd-app-pos { font:italic 19px/1.5 Georgia,serif; color:var(--wd-blue); margin-top:5px; }
+  #word-daily-preview .wd-app-phonetic { font-size:14px; color:var(--wd-secondary); margin-top:15px; }
+  #word-daily-preview .wd-definition { font:23px/1.45 Georgia,'Times New Roman',serif; margin-top:30px; }
+  #word-daily-preview .wd-translation { font-size:18px; line-height:1.5; color:var(--wd-blue); margin-top:17px; }
+  #word-daily-preview .wd-explanation { font-size:14px; line-height:1.7; color:var(--wd-secondary); margin-top:12px; }
+  #word-daily-preview .wd-rule { height:1px; background:var(--wd-line); margin:28px 0; }
+  #word-daily-preview .wd-examples { display:grid; gap:22px; margin-top:18px; }
+  #word-daily-preview .wd-example { margin:0; border-left:2px solid var(--wd-line); padding-left:16px; }
+  #word-daily-preview .wd-example-en { font:19px/1.55 Georgia,'Times New Roman',serif; }
+  #word-daily-preview .wd-example-ru { font-size:13px; line-height:1.65; color:var(--wd-secondary); margin-top:10px; }
+  #word-daily-preview .wd-usage { font-size:14px; line-height:1.7; margin-top:12px; }
+  #word-daily-preview .wd-examples + h3, #word-daily-preview .wd-usage + h3 { margin-top:30px; }
+  #word-daily-preview .wd-synonyms { font:italic 18px/1.6 Georgia,serif; color:var(--wd-blue); margin-top:10px; }
+  @media(max-width:360px) { #word-daily-preview .wd-word { font-size:34px; } #word-daily-preview .wd-widget { padding:19px; } #word-daily-preview .wd-pos { font-size:15px; } #word-daily-preview .wd-article { padding:25px 22px; } }
+</style>
+<script>
+(() => {
+  const root = document.getElementById('word-daily-preview');
+  const widget = root.querySelector('.wd-widget');
+  const app = root.querySelector('.wd-app');
+  const hint = root.querySelector('.wd-hint');
+  const words = {
+    euphoria: {
+      word:'euphoria', pos:'noun', phonetic:'/juːˈfɔːriə/',
+      definition:'an intense feeling of happiness and excitement', translation:'эйфория, чувство восторга',
+      explanation:'Сильный эмоциональный подъём, когда радость на какое-то время захватывает целиком.',
+      usage:'Подходит для ярких переживаний: победы, концерта, хороших новостей. Для обычного хорошего настроения чаще достаточно happiness.',
+      examples:[['For a moment, the whole crowd shared the same euphoria.','На мгновение всю толпу охватило общее чувство восторга.'],['The euphoria of getting the offer lasted all weekend.','Эйфория от полученного предложения о работе не проходила все выходные.']],
+      synonyms:'elation · joy · exhilaration'
+    },
+    lowkey: {
+      word:'lowkey', pos:'adverb · slang', phonetic:'/ˌloʊˈkiː/',
+      definition:'quietly or secretly, without making a big deal of it', translation:'втайне; немного; если честно',
+      explanation:'Помогает ненавязчиво признаться в чувстве или мнении. Иногда смягчает фразу примерно как «вообще-то» или «немного».',
+      usage:'Для переписки и разговоров с друзьями. Здесь сленговое наречие lowkey; прилагательное low-key означает «сдержанный, спокойный».',
+      examples:[['I lowkey want to stay home and watch old movies.','Если честно, мне хочется остаться дома и смотреть старые фильмы.'],['She was lowkey excited about the reunion.','В глубине души она очень ждала эту встречу.']],
+      synonyms:'secretly · quietly'
+    }
+  };
+  const state = { word:'euphoria', size:'medium', opened:false };
+  const saved = window.openai?.widgetState?.privateContent;
+  function applySaved(data) {
+    if (!data || typeof data !== 'object') return;
+    if (words[data.word]) state.word = data.word;
+    if (['small','medium'].includes(data.size)) state.size = data.size;
+    if (typeof data.opened === 'boolean') state.opened = data.opened;
+  }
+  applySaved(saved);
+  const text = (selector,value) => { root.querySelector(selector).textContent = value; };
+  function render() {
+    const word = words[state.word];
+    widget.classList.toggle('wd-small', state.size === 'small');
+    widget.hidden = state.opened;
+    app.hidden = !state.opened;
+    hint.hidden = state.opened;
+    widget.setAttribute('aria-label', 'Открыть слово дня ' + word.word);
+    text('.wd-word',word.word);
+    text('.wd-pos',word.pos.split(' · ')[0]);
+    text('.wd-phonetic',word.phonetic);
+    text('.wd-widget-definition',': ' + word.definition);
+    text('.wd-app-word',word.word);
+    text('.wd-app-pos',word.pos);
+    text('.wd-app-phonetic',word.phonetic);
+    text('.wd-definition',': ' + word.definition);
+    text('.wd-translation',word.translation);
+    text('.wd-explanation',word.explanation);
+    text('.wd-usage',word.usage);
+    text('.wd-synonyms',word.synonyms);
+    const examples = root.querySelector('.wd-examples');
+    examples.replaceChildren();
+    for (const [english,russian] of word.examples) {
+      const group = document.createElement('blockquote'); group.className = 'wd-example';
+      const en = document.createElement('p'); en.className = 'wd-example-en'; en.lang = 'en'; en.textContent = english;
+      const ru = document.createElement('p'); ru.className = 'wd-example-ru'; ru.lang = 'ru'; ru.textContent = russian;
+      group.append(en,ru); examples.append(group);
+    }
+  }
+  function save() {
+    if (window.openai?.setWidgetState) {
+      window.openai.setWidgetState({modelContent:{previewWord:state.word,widgetSize:state.size},privateContent:{...state}}).catch(() => {});
+    }
+  }
+  widget.addEventListener('click',() => { state.opened = true; render(); save(); root.querySelector('.wd-back').focus(); });
+  root.querySelector('.wd-back').addEventListener('click',() => { state.opened = false; render(); save(); widget.focus(); });
+  window.addEventListener('openai:set_globals',event => {
+    const data = event.detail?.globals?.widgetState?.privateContent;
+    if (data) { applySaved(data); render(); }
+  });
+  render();
+  if (globalThis.Tweak) {
+    const tweak = new Tweak({container:root,onChange:() => {render();save();}});
+    tweak.addSelect(state,'size',{label:'Размер виджета',options:[{label:'Маленький',value:'small'},{label:'Средний',value:'medium'}]});
+    tweak.addSelect(state,'word',{label:'Слово',options:[{label:'euphoria — обычная лексика',value:'euphoria'},{label:'lowkey — сленг',value:'lowkey'}]});
+  }
+})();
+</script>
