@@ -3,6 +3,8 @@ import Foundation
 struct WordExample: Codable, Hashable {
     let english: String
     let russian: String
+    let sourceURL: URL?
+    let translationSourceURL: URL?
 }
 
 struct WordEntry: Codable, Identifiable, Hashable {
@@ -17,6 +19,16 @@ struct WordEntry: Codable, Identifiable, Hashable {
     let usage: String
     let synonyms: [String]
     let examples: [WordExample]
+    let source: String?
+    let sourceURL: URL?
+
+    var registerLabel: String? {
+        switch register {
+        case "slang": return "сленг"
+        case "informal": return "разговорное"
+        default: return nil
+        }
+    }
 }
 
 struct WordCatalogue {
@@ -42,8 +54,13 @@ struct WordCatalogue {
 
     subscript(id: String) -> WordEntry? { words.first { $0.id == id } }
 
-    func word(on date: Date, timeZone: TimeZone = .current) -> WordEntry {
-        words[DailySchedule.dayIndex(on: date, timeZone: timeZone, count: words.count)]
+    func word(on date: Date, timeZone: TimeZone = .current) -> WordEntry? {
+        guard let index = DailySchedule.dayIndex(on: date, timeZone: timeZone, count: words.count) else { return nil }
+        return words[index]
+    }
+
+    func remainingWords(after date: Date, timeZone: TimeZone = .current) -> Int {
+        DailySchedule.remainingWords(after: date, timeZone: timeZone, count: words.count)
     }
 
     /// Today and six previous civil days, newest first. No future entries.
@@ -52,7 +69,8 @@ struct WordCatalogue {
         let today = calendar.startOfDay(for: date)
         return (0..<7).compactMap { offset in
             guard let day = calendar.date(byAdding: .day, value: -offset, to: today) else { return nil }
-            return DatedWord(date: day, word: word(on: day, timeZone: timeZone))
+            guard let word = word(on: day, timeZone: timeZone) else { return nil }
+            return DatedWord(date: day, word: word)
         }
     }
 
@@ -67,10 +85,14 @@ struct DatedWord: Identifiable {
 
 enum WordLink {
     static func url(for word: WordEntry) -> URL {
+        url(forID: word.id)
+    }
+
+    static func url(forID id: String) -> URL {
         var components = URLComponents()
         components.scheme = "worddaily"
         components.host = "word"
-        components.path = "/" + word.id
+        components.path = "/" + id
         // IDs are local, validated catalogue identifiers, never arbitrary URLs.
         return components.url!
     }

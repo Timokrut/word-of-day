@@ -25,9 +25,10 @@ struct WeekWordsView: View {
     var body: some View {
         NavigationStack {
             TimelineView(.periodic(from: .now, by: 60)) { context in
+                let week = catalogue.recentWeek(endingOn: context.date)
                 List {
                     Section {
-                        ForEach(catalogue.recentWeek(endingOn: context.date)) { day in
+                        ForEach(week) { day in
                             NavigationLink(value: day.word) {
                                 VStack(alignment: .leading, spacing: 10) {
                                     HStack(alignment: .firstTextBaseline) {
@@ -46,11 +47,19 @@ struct WeekWordsView: View {
                             }
                         }
                     } header: {
-                        Text("Сегодня и шесть предыдущих дней")
+                        if !week.isEmpty {
+                            Text("Опубликованные слова за последние семь дней")
+                        }
                     }
                 }
                 .scrollContentBackground(.hidden)
                 .background(EditorialStyle.paper)
+                .overlay {
+                    if week.isEmpty {
+                        ContentUnavailableView("Нет слов за эту неделю", systemImage: "calendar",
+                            description: Text("За последние семь дней в подборке не было новых слов."))
+                    }
+                }
             }
             .navigationTitle("Последняя неделя")
             .navigationDestination(for: WordEntry.self) { word in
@@ -108,8 +117,8 @@ private struct WordLibraryRow: View {
             HStack(alignment: .firstTextBaseline, spacing: 10) {
                 Text(word.word).font(EditorialStyle.serif(24))
                     .foregroundStyle(EditorialStyle.ink)
-                if word.register == "slang" {
-                    Text("сленг").font(.caption).foregroundStyle(EditorialStyle.blue)
+                if let register = word.registerLabel {
+                    Text(register).font(.caption).foregroundStyle(EditorialStyle.blue)
                 }
                 Spacer(minLength: 0)
                 if isSaved {

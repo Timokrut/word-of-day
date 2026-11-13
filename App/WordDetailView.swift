@@ -4,6 +4,7 @@ struct WordDetailView: View {
     let word: WordEntry
     @ObservedObject var speech: WordSpeech
     @ObservedObject var savedWords: SavedWordsStore
+    @State private var showingDataLicenses = false
 
     var body: some View {
         ScrollView {
@@ -18,8 +19,8 @@ struct WordDetailView: View {
                         .accessibilityAddTraits(.isHeader)
                     HStack(alignment: .firstTextBaseline, spacing: 12) {
                         Text(word.partOfSpeech).font(EditorialStyle.serif(19)).italic()
-                        if word.register == "slang" {
-                            Text("сленг").font(.caption.monospaced())
+                        if let register = word.registerLabel {
+                            Text(register).font(.caption.monospaced())
                         }
                     }.foregroundStyle(EditorialStyle.blue)
                     Button {
@@ -59,6 +60,18 @@ struct WordDetailView: View {
                                     .environment(\.locale, Locale(identifier: "en_US"))
                                 Text(example.russian)
                                     .font(.subheadline).foregroundStyle(.secondary).lineSpacing(4)
+                                if let source = example.sourceURL {
+                                    HStack(spacing: 12) {
+                                        Text("Tatoeba · CC BY 2.0 FR")
+                                        Link("EN", destination: source)
+                                        if let translationSource = example.translationSourceURL {
+                                            Link("RU", destination: translationSource)
+                                        }
+                                    }
+                                    .font(.caption2)
+                                    .foregroundStyle(.secondary)
+                                    .accessibilityElement(children: .contain)
+                                }
                             }
                         }.fixedSize(horizontal: false, vertical: true)
                     }
@@ -68,14 +81,22 @@ struct WordDetailView: View {
                     sectionLabel("КАК ИСПОЛЬЗОВАТЬ")
                     Text(word.usage).font(.body).lineSpacing(5)
                 }
-                VStack(alignment: .leading, spacing: 12) {
-                    sectionLabel("БЛИЗКИЕ ПО СМЫСЛУ")
-                    Text(word.synonyms.joined(separator: "  ·  "))
-                        .font(EditorialStyle.serif(19)).italic()
-                        .foregroundStyle(EditorialStyle.blue)
+                if !word.synonyms.isEmpty {
+                    VStack(alignment: .leading, spacing: 12) {
+                        sectionLabel("БЛИЗКИЕ ПО СМЫСЛУ")
+                        Text(word.synonyms.joined(separator: "  ·  "))
+                            .font(EditorialStyle.serif(19)).italic()
+                            .foregroundStyle(EditorialStyle.blue)
+                    }
                 }
-                Text("Авторская демоподборка · произношение: синтез речи iOS")
-                    .font(.caption).foregroundStyle(.secondary).padding(.top, 8)
+                VStack(alignment: .leading, spacing: 10) {
+                    if let source = word.source, let sourceURL = word.sourceURL {
+                        Link(source, destination: sourceURL)
+                    }
+                    Text("Произношение: синтез речи iOS")
+                    Button("Источники и лицензии") { showingDataLicenses = true }
+                }
+                .font(.caption).foregroundStyle(.secondary).padding(.top, 8)
             }
             .frame(maxWidth: 540, alignment: .leading)
             .padding(.horizontal, 28).padding(.top, 30).padding(.bottom, 36)
@@ -89,11 +110,39 @@ struct WordDetailView: View {
             }
         }
         .onDisappear { speech.stop() }
+        .sheet(isPresented: $showingDataLicenses) { DataLicensesView() }
         .id(word.id)
     }
 
     private func sectionLabel(_ title: String) -> some View {
         Text(title).font(.caption2.monospaced()).tracking(2)
             .foregroundStyle(.secondary).accessibilityAddTraits(.isHeader)
+    }
+}
+
+private struct DataLicensesView: View {
+    @Environment(\.dismiss) private var dismiss
+    private var licenseText: String {
+        guard let url = Bundle.main.url(forResource: "DataLicenses", withExtension: "txt"),
+              let text = try? String(contentsOf: url, encoding: .utf8) else {
+            return "Источники: Open English Wordnet (CC BY 4.0), Tatoeba (CC BY 2.0 FR), ipa-dict (MIT)."
+        }
+        return text
+    }
+
+    var body: some View {
+        NavigationStack {
+            ScrollView {
+                Text(licenseText).font(.footnote).textSelection(.enabled)
+                    .frame(maxWidth: .infinity, alignment: .leading).padding(24)
+            }
+            .background(EditorialStyle.paper)
+            .navigationTitle("Источники").navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Готово") { dismiss() }
+                }
+            }
+        }.tint(EditorialStyle.blue)
     }
 }

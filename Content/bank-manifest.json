@@ -1,0 +1,45 @@
+{
+  "edition": "offline-1000-v1",
+  "preparedOn": "2026-11-13",
+  "cardCount": 1000,
+  "distinctHeadwords": 1000,
+  "examplePairs": 2000,
+  "corpusExamplePairs": 1718,
+  "registers": {
+    "standard": 893,
+    "slang": 52,
+    "informal": 55
+  },
+  "bankSHA256": "4c73a2afaea56d91f91ef141c12f158ecc888a2cb3284c1579e58de29e4628f0",
+  "scheduleStart": "2026-11-13",
+  "scheduleLastDate": "2029-08-08",
+  "repeats": false,
+  "review": "Structural validation of all cards and selective contextual editing; not a full professional linguistic review.",
+  "sources": [
+    {
+      "file": "wordnet.xml.gz",
+      "url": "https://en-word.net/static/english-wordnet-2025.xml.gz",
+      "sha256": "9ca6d1dcb75f822fdd66617f7d9da48142ace38dd544d6ad5e2feca1674ad3fe"
+    },
+    {
+      "file": "en_US.txt",
+      "url": "https://raw.githubusercontent.com/open-dict-data/ipa-dict/master/data/en_US.txt",
+      "sha256": "2af6f154a5c363275f052d1f85acedef38ed185ca9745aa4314be77f6b70de67"
+    },
+    {
+      "file": "eng.tsv.bz2",
+      "url": "https://downloads.tatoeba.org/exports/per_language/eng/eng_sentences.tsv.bz2",
+      "sha256": "1a2d75ac07aa5d035bff4e2bf053139dfd3b1f1645f6fd3d76fc852cc9ef6020"
+    },
+    {
+      "file": "rus.tsv.bz2",
+      "url": "https://downloads.tatoeba.org/exports/per_language/rus/rus_sentences.tsv.bz2",
+      "sha256": "fe81d065a2fe60789ab359a6f680e7b623e45d70215e3e877dd8bb1f9be96c0a"
+    },
+    {
+      "file": "links.tar.bz2",
+      "url": "https://downloads.tatoeba.org/exports/links.tar.bz2",
+      "sha256": "c8ed4ce074b8a07538c8ca464e97975c61ee379636e45dbc5c464b2943493ab6"
+    }
+  ]
+}

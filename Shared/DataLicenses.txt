@@ -1,0 +1,44 @@
+Источники слов и примеров
+
+В этой версии приложения 1000 учебных карточек: английские слова и устойчивые выражения, русские переводы и пояснения, по два примера с переводом. Подбор, русские пояснения, заметки об употреблении и часть определений и примеров подготовлены для word.
+
+Open English Wordnet 2025
+Определения и часть близких по смыслу слов основаны на Open English Wordnet 2025; отдельные формулировки и наборы синонимов адаптированы. Источник: Open English Wordnet Community, на основе Princeton WordNet.
+https://en-word.net/downloads
+https://github.com/globalwordnet/english-wordnet
+Лицензия: Creative Commons Attribution 4.0 International (CC BY 4.0).
+https://creativecommons.org/licenses/by/4.0/
+Список соавторов доступен в репозитории Open English Wordnet.
+
+Tatoeba
+Часть английских примеров и их русских переводов взята из открытого корпуса Tatoeba. Авторы — участники Tatoeba; точные страницы оригиналов и переводов доступны по ссылкам EN и RU рядом с каждым заимствованным примером. Ссылки одновременно указывают авторство соответствующих предложений. Тексты примеров не изменены.
+https://tatoeba.org/
+Лицензия: Creative Commons Attribution 2.0 France (CC BY 2.0 FR).
+https://creativecommons.org/licenses/by/2.0/fr/
+https://en.wiki.tatoeba.org/articles/show/using-the-tatoeba-corpus
+
+ipa-dict
+Большинство новых транскрипций американского английского взято из ipa-dict. Для некоторых слов использованы транскрипции Wordnet либо редакционные транскрипции. Произношение в приложении воспроизводится системным синтезом речи iOS.
+https://github.com/open-dict-data/ipa-dict
+
+The MIT License (MIT)
+
+Copyright (c) 2016 dohliam
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

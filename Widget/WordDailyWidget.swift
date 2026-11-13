@@ -1,9 +1,21 @@
 import SwiftUI
 import WidgetKit
 
+/// Decode only the fields displayed by the widget, keeping a 1000-card bank light.
+struct WidgetWord: Decodable {
+    let id: String
+    let word: String
+    let partOfSpeech: String
+    let phonetic: String
+    let register: String
+    let definition: String
+    var registerLabel: String? { register == "standard" ? nil : register }
+}
+
 struct DailyEntry: TimelineEntry {
     let date: Date
-    let word: WordEntry?
+    let word: WidgetWord?
+    let remainingWords: Int?
 }
 
 struct DailyProvider: TimelineProvider {
@@ -17,15 +29,31 @@ struct DailyProvider: TimelineProvider {
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<DailyEntry>) -> Void) {
         let dates = DailySchedule.timelineDates(from: .now)
-        let catalogue = try? WordCatalogue()
+        let words = loadWords()
         let entries = dates.map { date in
-            DailyEntry(date: date, word: catalogue?.word(on: date))
+            DailyEntry(date: date, word: word(at: date, in: words),
+                       remainingWords: words.map { DailySchedule.remainingWords(after: date, count: $0.count) })
         }
         completion(Timeline(entries: entries, policy: .atEnd))
     }
 
     private func entry(at date: Date) -> DailyEntry {
-        DailyEntry(date: date, word: (try? WordCatalogue())?.word(on: date))
+        let words = loadWords()
+        return DailyEntry(date: date, word: word(at: date, in: words),
+                          remainingWords: words.map { DailySchedule.remainingWords(after: date, count: $0.count) })
+    }
+
+    private func loadWords() -> [WidgetWord]? {
+        guard let url = Bundle.main.url(forResource: "words", withExtension: "json"),
+              let data = try? Data(contentsOf: url),
+              let words = try? JSONDecoder().decode([WidgetWord].self, from: data),
+              !words.isEmpty else { return nil }
+        return words
+    }
+
+    private func word(at date: Date, in words: [WidgetWord]?) -> WidgetWord? {
+        guard let words, let index = DailySchedule.dayIndex(on: date, count: words.count) else { return nil }
+        return words[index]
     }
 }
 
@@ -65,17 +93,24 @@ struct DailyWidgetView: View {
                         .lineLimit(isSmall ? 3 : 2)
                         .fixedSize(horizontal: false, vertical: true)
                     Spacer(minLength: 0)
-                    if !isSmall && word.register == "slang" {
-                        Text("slang").font(.system(size: 9, design: .monospaced))
+                    if !isSmall && word.registerLabel != nil {
+                        Text(word.register).font(.system(size: 9, design: .monospaced))
                             .foregroundStyle(EditorialStyle.blue)
                     }
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
-                .widgetURL(WordLink.url(for: word))
+                .widgetURL(WordLink.url(forID: word.id))
                 .accessibilityElement(children: .combine)
                 .accessibilityLabel("\(word.word), \(word.partOfSpeech). \(word.definition). Открыть перевод и примеры.")
             } else {
-                Text("Открой word., чтобы проверить подборку.").font(.footnote)
+                if entry.remainingWords == 0 {
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("Все слова уже вышли.").font(.headline)
+                        Text("Сохранённые карточки — в твоём словаре.").font(.caption)
+                    }
+                } else {
+                    Text("Открой word., чтобы проверить подборку.").font(.footnote)
+                }
             }
         }
         .containerBackground(EditorialStyle.paper, for: .widget)

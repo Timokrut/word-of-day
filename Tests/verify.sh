@@ -3,6 +3,7 @@ set -eu
 PROJECT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
 VERIFY_DIR=$(mktemp -d "${TMPDIR:-/tmp}/worddaily-verify.XXXXXX")
 trap 'rm -rf "$VERIFY_DIR"' EXIT
+python3 "$PROJECT_DIR/Tools/validate_word_bank.py" "$PROJECT_DIR/Shared/words.json"
 swiftc -module-cache-path "$VERIFY_DIR/cache" \
   "$PROJECT_DIR/Shared/WordEntry.swift" \
   "$PROJECT_DIR/Shared/DailySchedule.swift" \

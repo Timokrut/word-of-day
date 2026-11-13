@@ -67,18 +67,35 @@ struct DailyWordScreen: View {
             TimelineView(.periodic(from: .now, by: 60)) { context in
                 let today = catalogue.word(on: context.date)
                 let word = openedWordID.flatMap { catalogue[$0] } ?? today
-                WordDetailView(word: word, speech: speech, savedWords: savedWords)
+                let remaining = catalogue.remainingWords(after: context.date)
+                Group {
+                    if let word {
+                        WordDetailView(word: word, speech: speech, savedWords: savedWords)
+                    } else if remaining == catalogue.words.count {
+                        ContentUnavailableView("Слово ещё не вышло", systemImage: "calendar",
+                            description: Text("Первое слово появится в день начала подборки."))
+                    } else {
+                        ContentUnavailableView("Подборка закончилась", systemImage: "checkmark.seal",
+                            description: Text("Все слова уже вышли. Сохранённые карточки доступны в «Моём словаре»."))
+                    }
+                }
+                    .background(EditorialStyle.paper)
                     .safeAreaInset(edge: .bottom) {
-                        if word.id != today.id {
-                            Button("К слову дня") {
-                                speech.stop()
-                                openedWordID = nil
+                        VStack(spacing: 8) {
+                            if openedWordID != nil && openedWordID != today?.id {
+                                Button("К слову дня") {
+                                    speech.stop()
+                                    openedWordID = nil
+                                }
+                                .buttonStyle(.borderedProminent)
+                                .padding(.top, 8)
                             }
-                            .buttonStyle(.borderedProminent)
-                            .padding()
+                            Text("Осталось слов: \(remaining)")
+                                .font(.caption).foregroundStyle(.secondary)
+                                .padding(.vertical, 8)
+                        }
                             .frame(maxWidth: .infinity)
                             .background(EditorialStyle.paper)
-                        }
                     }
                     .navigationTitle("word.")
                     .navigationBarTitleDisplayMode(.inline)
