@@ -3,6 +3,7 @@ import SwiftUI
 struct WordDetailView: View {
     let word: WordEntry
     @ObservedObject var speech: WordSpeech
+    @ObservedObject var savedWords: SavedWordsStore
 
     var body: some View {
         ScrollView {
@@ -82,6 +83,12 @@ struct WordDetailView: View {
         }
         .background(EditorialStyle.paper)
         .textSelection(.enabled)
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                SaveWordButton(word: word, savedWords: savedWords)
+            }
+        }
+        .onDisappear { speech.stop() }
         .id(word.id)
     }
 

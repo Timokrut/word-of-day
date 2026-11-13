@@ -46,7 +46,23 @@ struct WordCatalogue {
         words[DailySchedule.dayIndex(on: date, timeZone: timeZone, count: words.count)]
     }
 
+    /// Today and six previous civil days, newest first. No future entries.
+    func recentWeek(endingOn date: Date, timeZone: TimeZone = .current) -> [DatedWord] {
+        let calendar = DailySchedule.calendar(in: timeZone)
+        let today = calendar.startOfDay(for: date)
+        return (0..<7).compactMap { offset in
+            guard let day = calendar.date(byAdding: .day, value: -offset, to: today) else { return nil }
+            return DatedWord(date: day, word: word(on: day, timeZone: timeZone))
+        }
+    }
+
     enum CatalogueError: Error { case missingResource, invalidContents }
+}
+
+struct DatedWord: Identifiable {
+    let date: Date
+    let word: WordEntry
+    var id: Date { date }
 }
 
 enum WordLink {

@@ -17,20 +17,57 @@ struct WordDailyApp: App {
     }
 }
 
+private enum LibraryTab: Hashable { case today, week, dictionary }
+
 struct DailyWordScreen: View {
     let catalogue: WordCatalogue
     @Environment(\.scenePhase) private var scenePhase
+    @State private var selectedTab = LibraryTab.today
     @State private var openedWordID: String?
     @State private var showingWidgetHelp = false
-    @State private var showingCollection = false
     @StateObject private var speech = WordSpeech()
+    @StateObject private var savedWords = SavedWordsStore()
 
     var body: some View {
-        TimelineView(.periodic(from: .now, by: 60)) { context in
-            let today = catalogue.word(on: context.date)
-            let word = openedWordID.flatMap { catalogue[$0] } ?? today
-            NavigationStack {
-                WordDetailView(word: word, speech: speech)
+        TabView(selection: $selectedTab) {
+            todayScreen
+                .tabItem { Label("Сегодня", systemImage: "sun.max") }
+                .tag(LibraryTab.today)
+
+            WeekWordsView(catalogue: catalogue, savedWords: savedWords, speech: speech)
+                .tabItem { Label("Неделя", systemImage: "calendar") }
+                .tag(LibraryTab.week)
+
+            SavedWordsView(savedWords: savedWords, speech: speech)
+                .tabItem { Label("Мой словарь", systemImage: "bookmark") }
+                .tag(LibraryTab.dictionary)
+        }
+        .tint(EditorialStyle.blue)
+        .onOpenURL { url in
+            if let id = WordLink.wordID(from: url, catalogue: catalogue) {
+                speech.stop()
+                showingWidgetHelp = false
+                openedWordID = id
+                selectedTab = .today
+            }
+        }
+        .onChange(of: selectedTab) { _, _ in speech.stop() }
+        .onChange(of: scenePhase) { _, phase in
+            if phase == .active {
+                WidgetCenter.shared.reloadAllTimelines()
+            } else {
+                speech.stop()
+            }
+        }
+        .sheet(isPresented: $showingWidgetHelp) { WidgetHelpView() }
+    }
+
+    private var todayScreen: some View {
+        NavigationStack {
+            TimelineView(.periodic(from: .now, by: 60)) { context in
+                let today = catalogue.word(on: context.date)
+                let word = openedWordID.flatMap { catalogue[$0] } ?? today
+                WordDetailView(word: word, speech: speech, savedWords: savedWords)
                     .safeAreaInset(edge: .bottom) {
                         if word.id != today.id {
                             Button("К слову дня") {
@@ -48,13 +85,6 @@ struct DailyWordScreen: View {
                     .toolbar {
                         ToolbarItem(placement: .topBarLeading) {
                             Button {
-                                showingCollection = true
-                            } label: {
-                                Label("Подборка", systemImage: "books.vertical")
-                            }
-                        }
-                        ToolbarItem(placement: .topBarTrailing) {
-                            Button {
                                 showingWidgetHelp = true
                             } label: {
                                 Label("Добавить виджет", systemImage: "square.grid.2x2")
@@ -62,56 +92,6 @@ struct DailyWordScreen: View {
                         }
                     }
             }
-            .tint(EditorialStyle.blue)
-        }
-        .onOpenURL { url in
-            if let id = WordLink.wordID(from: url, catalogue: catalogue) {
-                speech.stop()
-                showingCollection = false
-                showingWidgetHelp = false
-                openedWordID = id
-            }
-        }
-        .onChange(of: scenePhase) { _, phase in
-            if phase == .active {
-                WidgetCenter.shared.reloadAllTimelines()
-            } else {
-                speech.stop()
-            }
-        }
-        .sheet(isPresented: $showingWidgetHelp) { WidgetHelpView() }
-        .sheet(isPresented: $showingCollection) {
-            NavigationStack {
-                List {
-                    Section {
-                        ForEach(catalogue.words) { word in
-                            Button {
-                                speech.stop()
-                                openedWordID = word.id
-                                showingCollection = false
-                            } label: {
-                                VStack(alignment: .leading, spacing: 6) {
-                                    HStack {
-                                        Text(word.word).font(EditorialStyle.serif(24))
-                                        if word.register == "slang" {
-                                            Text("сленг").font(.caption).foregroundStyle(EditorialStyle.blue)
-                                        }
-                                    }
-                                    Text(word.translation).font(.subheadline).foregroundStyle(.secondary)
-                                }.padding(.vertical, 6)
-                            }.foregroundStyle(EditorialStyle.ink)
-                        }
-                    } footer: {
-                        Text("Пробная подборка: 14 слов, по одному в день. Затем цикл повторяется. Определения, примеры и переводы подготовлены для прототипа.")
-                    }
-                }
-                .navigationTitle("Подборка")
-                .toolbar {
-                    ToolbarItem(placement: .confirmationAction) {
-                        Button("Готово") { showingCollection = false }
-                    }
-                }
-            }.tint(EditorialStyle.blue)
         }
     }
 }
