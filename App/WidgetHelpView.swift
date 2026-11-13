@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct WidgetHelpView: View {
+    let catalogue: WordCatalogue
     @Environment(\.dismiss) private var dismiss
 
     var body: some View {
@@ -16,6 +17,10 @@ struct WidgetHelpView: View {
                     step("3", "Найди word., выбери размер и нажми «Добавить виджет».")
                     Text("Следующее слово запланировано на начало нового дня. Время обновления контролирует iOS.")
                         .font(.footnote).foregroundStyle(.secondary)
+                    TimelineView(.periodic(from: .now, by: 60)) { context in
+                        Text("Осталось слов: \(catalogue.remainingWords(after: context.date))")
+                            .font(.footnote).foregroundStyle(.secondary)
+                    }
                 }.padding(28)
             }
             .background(EditorialStyle.paper)

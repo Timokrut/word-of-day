@@ -59,7 +59,7 @@ struct DailyWordScreen: View {
                 speech.stop()
             }
         }
-        .sheet(isPresented: $showingWidgetHelp) { WidgetHelpView() }
+        .sheet(isPresented: $showingWidgetHelp) { WidgetHelpView(catalogue: catalogue) }
     }
 
     private var todayScreen: some View {
@@ -81,21 +81,16 @@ struct DailyWordScreen: View {
                 }
                     .background(EditorialStyle.paper)
                     .safeAreaInset(edge: .bottom) {
-                        VStack(spacing: 8) {
-                            if openedWordID != nil && openedWordID != today?.id {
-                                Button("К слову дня") {
-                                    speech.stop()
-                                    openedWordID = nil
-                                }
-                                .buttonStyle(.borderedProminent)
-                                .padding(.top, 8)
+                        if openedWordID != nil && openedWordID != today?.id {
+                            Button("К слову дня") {
+                                speech.stop()
+                                openedWordID = nil
                             }
-                            Text("Осталось слов: \(remaining)")
-                                .font(.caption).foregroundStyle(.secondary)
-                                .padding(.vertical, 8)
-                        }
+                            .buttonStyle(.borderedProminent)
+                            .padding()
                             .frame(maxWidth: .infinity)
                             .background(EditorialStyle.paper)
+                        }
                     }
                     .navigationTitle("word.")
                     .navigationBarTitleDisplayMode(.inline)
